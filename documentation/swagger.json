@@ -1,0 +1,492 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "homework-9",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "register",
+        "operationId": "register",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/registerrequest"
+                  },
+                  {
+                    "example": {
+                      "id": "105",
+                      "email": "alvinadibrataraharjo@gmail.com",
+                      "gender": "Male",
+                      "password": "123",
+                      "role": "admin"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "id": "105",
+                "email": "alvinadibrataraharjo@gmail.com",
+                "gender": "Male",
+                "password": "123",
+                "role": "admin"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Login",
+        "operationId": "Login",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LoginRequest"
+                  },
+                  {
+                    "example": {
+                      "email": "alvinadibrataraharjo@gmail.com",
+                      "password": "123"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "alvinadibrataraharjo@gmail.com",
+                "password": "123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "get user with limit",
+        "operationId": "getuserwithlimit",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users/5": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "New Request",
+        "operationId": "NewRequest",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTA1LCJlbWFpbCI6ImFsdmluYWRpYnJhdGFyYWhhcmpvQGdtYWlsLmNvbSIsImdlbmRlciI6Ik1hbGUiLCJwYXNzd29yZCI6IjEyMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5NjY5MzA0Nn0.FOJMk730AgQpzcDpHcxU1KmkfToMo-g_WGA19p_n4GI"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/movie": {
+      "post": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "create movie",
+        "operationId": "createmovie",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTA0LCJlbWFpbCI6ImFsdmluIiwiZ2VuZGVyIjoibGFraSIsInBhc3N3b3JkIjoiMTIzIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjk2Njc1MjgzfQ.yadfhGC04m8_7oaXZ8AO0RC5C4yPvAPxs4YEBwVRBgM"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/createmovierequest"
+                  },
+                  {
+                    "example": {
+                      "title": "testing title",
+                      "genres": "testing genres",
+                      "year": 2000
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "title": "testing title",
+                "genres": "testing genres",
+                "year": 2000
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "get movies with limit",
+        "operationId": "getmovieswithlimit",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 5
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "enum": [
+                "application/json"
+              ],
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/movie/4": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "get moviewith spesific id",
+        "operationId": "getmoviewithspesificid",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "enum": [
+                "application/json"
+              ],
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/movie/2": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "update movie",
+        "operationId": "updatemovie",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTA1LCJlbWFpbCI6ImFsdmluYWRpYnJhdGFyYWhhcmpvQGdtYWlsLmNvbSIsImdlbmRlciI6Ik1hbGUiLCJwYXNzd29yZCI6IjEyMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5NjY5MzA0Nn0.FOJMk730AgQpzcDpHcxU1KmkfToMo-g_WGA19p_n4GI"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/updatemovierequest"
+                  },
+                  {
+                    "example": {
+                      "title": "test title movie"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "title": "test title movie"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "delete": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "delete movie",
+        "operationId": "deletemovie",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTA1LCJlbWFpbCI6ImFsdmluYWRpYnJhdGFyYWhhcmpvQGdtYWlsLmNvbSIsImdlbmRlciI6Ik1hbGUiLCJwYXNzd29yZCI6IjEyMyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5NjY5MzA0Nn0.FOJMk730AgQpzcDpHcxU1KmkfToMo-g_WGA19p_n4GI"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "registerrequest": {
+        "title": "registerrequest",
+        "required": [
+          "id",
+          "email",
+          "gender",
+          "password",
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": "105",
+          "email": "alvinadibrataraharjo@gmail.com",
+          "gender": "Male",
+          "password": "123",
+          "role": "admin"
+        }
+      },
+      "LoginRequest": {
+        "title": "LoginRequest",
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "alvinadibrataraharjo@gmail.com",
+          "password": "123"
+        }
+      },
+      "createmovierequest": {
+        "title": "createmovierequest",
+        "required": [
+          "title",
+          "genres",
+          "year"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "genres": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "title": "testing title",
+          "genres": "testing genres",
+          "year": 2000
+        }
+      },
+      "updatemovierequest": {
+        "title": "updatemovierequest",
+        "required": [
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "title": "test title movie"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Users"
+    },
+    {
+      "name": "Movies"
+    },
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
